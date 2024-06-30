@@ -34,7 +34,6 @@ function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   candidateName = input.question('What is your name? ');
 }
-
 // function askQuestion() {
 //   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 //   candidateAnswer = input.question(question);
@@ -49,23 +48,30 @@ function askQuestion() {
 }
 
 function gradeQuiz(candidateAnswers) {
-
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
   // if (candidateAnswer === correctAnswer) {
   //   console.log(`Yes, ${correctAnswer} is the correct answer!`);
   // } else {
   //   console.log(`No, that answer is incorrect.`)
   // }
-  for (let i = 0; i < questions.length; i++){
-    console.log(`Your response to question ${i + 1} was: ${candidateAnswers[i]}
-    * The correct answer is: ${correctAnswers[i]}`);
+  for (let i = 0; i < candidateAnswers.length; i++) {
+    console.log(`You answered: ${candidateAnswers[i].toLowerCase()} | The correct answer is: ${correctAnswers[i].toLowerCase()}`);
   }
-
-
-
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
-
+  let score = 0;
+  let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
+  
+  for (let i = 0; i < candidateAnswers.length; i++) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      score += 1;
+    }
+    grade = ((score / questions.length) * 100);
+  }
+  console.log('========================= YOUR SCORE =========================');
+  if (grade >= 80) {
+    console.log(`Congratulations, ${candidateName}! You passed with a grade of ${grade}%.`);
+  } else {
+    console.log(`Sorry, ${candidateName}! You failed to pass with a grade of ${grade}%.`);
+  }
   return grade;
 }
 
