@@ -45,6 +45,7 @@ function askQuestion() {
     candidateAnswers.push(candidateAnswer);
   }
   console.log('========================= RESULTS =========================');
+  //added to make it easier on the eyes
 }
 
 function gradeQuiz(candidateAnswers) {
